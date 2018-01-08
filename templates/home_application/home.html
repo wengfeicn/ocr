@@ -5,6 +5,7 @@
 	    function upload() {
 	        var xhr = new XMLHttpRequest();
 	        var progress = document.getElementById("progress")
+		var txt = document.getElementById("text")
 	        progress.style.display = "block";
 
 	        xhr.upload.addEventListener("progress", function(e) {
@@ -23,9 +24,9 @@
 	        xhr.onreadystatechange = function() {
 	            console.log(xhr.readyState, xhr.status)
 	            if (xhr.readyState == 4 && xhr.status == 200) {
-	                progress.value = xhr.responseText
+	                txt.value = xhr.responseText
 			console.log(xhr.responseText); // handle response.
-	                //progress.style.display = "none";
+	                txt.style.display = "";
 	                //progress.value = 0;
 	            }
 	        };
@@ -75,7 +76,7 @@
 			    <br />
 			    <input type="file" name="file" onchange="imgPreview(this)" />
 			    <br />
-			    <img id="preview" />
+			    <table><tr><td><img id="preview" /></td><td><textarea id="text" rows="10" cols="50" style="display:none"></textarea></td></tr></table>
 			</div>
 		</div>
     </div>
